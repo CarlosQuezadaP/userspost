@@ -8,17 +8,10 @@ import com.example.dominio.datasource.IUserDomainLocalDataSource
 import com.example.dominio.model.UserDomain
 import com.example.dominio.model.UserPostsDomain
 
-
-//solo hace procesos de bases de dato
 class UserLocalDataSource(private val userDao: UserDao, private val userPostsDao: UserPostsDao) :
     IUserDomainLocalDataSource {
 
-    private var converters: Converters
-
-    init {
-        converters = Converters()
-    }
-
+    private var converters: Converters = Converters()
 
     override fun insertUserList(listUserDomain: List<UserDomain>) {
         val usersEntity = listUserDomain.map {

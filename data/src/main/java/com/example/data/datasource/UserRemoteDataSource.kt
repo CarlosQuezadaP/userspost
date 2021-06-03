@@ -46,13 +46,4 @@ class UserRemoteDataSource(private val webServiceApi: WebServiceApi) : IUserDoma
         return users
     }
 
-
 }
-
-
-//Por cada usuario realizar una peticion para traer los Posts de cada uno de ellos y agregarle al userDomain una lista de PostsDomain
-
-
-//Debo consumir los servicios de la interfaz WebService o metodos get, post
-//convertirlos de DTO a Domain, cuando los convierto de DTO a domain debe recibirlos el Domain ,
-// y en el Domain hacer la logica para insertarlos desde remoto a la base de datos local

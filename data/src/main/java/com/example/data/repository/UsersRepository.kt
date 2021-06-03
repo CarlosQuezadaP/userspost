@@ -13,17 +13,18 @@ class UsersRepository(
 
 
     override suspend fun getAllUsers(): List<UserDomain> {
-        val users: List<UserDomain>
         if (localDataSource.getSizeList() != 0) {
-            users = localDataSource.getUsersList()
+            return localDataSource.getUsersList().sortedBy {
+                it.name
+            }
         } else {
-            users = domainRemoteDataSource.getUsers()
+            val users = domainRemoteDataSource.getUsers()
             localDataSource.insertUserList(users)
             users.forEach {
                 localDataSource.insertPostByUser(it.posts)
             }
         }
-        return users.sortedBy {
+        return localDataSource.getUsersList().sortedBy {
             it.name
         }
     }
