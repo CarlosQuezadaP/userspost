@@ -9,11 +9,9 @@ class PostViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
 
 
     fun bindTo(postsDomain: UserPostsDomain){
-
-        itemView.title.text = postsDomain.title
-        itemView.body.text = postsDomain.body
-
-
-
+        itemView.apply {
+            title.text = postsDomain.title
+            body.text = postsDomain.body
+        }
     }
 }
